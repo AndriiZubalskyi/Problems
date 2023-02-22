@@ -113,5 +113,45 @@ namespace Problems
 
             return steps;
         }
+                
+        public class ListNode
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int val = 0, ListNode next = null)
+            {
+                this.val = val;
+                this.next = next;
+            }
+        }
+
+        public ListNode MiddleNode(ListNode head)
+        {
+            int middleIndex = 0;
+            ListNode middleNode = head;
+
+            while(head != null)
+            {
+                middleIndex++;
+                if(middleIndex % 2 == 0) middleNode = middleNode.next;
+                head = head.next;
+            }
+
+            return middleNode;
+        }
+
+        //better one
+        public ListNode MiddleNode2(ListNode head)
+        {
+            ListNode middleNode = head;
+
+            while ((head != null) && (head.next != null))
+            {
+                middleNode = middleNode.next;
+                head = head.next.next;
+            }
+
+            return middleNode;
+        }
     }
 }
