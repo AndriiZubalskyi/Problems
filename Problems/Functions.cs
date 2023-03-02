@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -152,6 +153,25 @@ namespace Problems
             }
 
             return middleNode;
+        }
+
+        public static bool CanConstruct(string ransomNote, string magazine)
+        {
+            Dictionary<char, int> letters = new Dictionary<char, int>();
+
+            foreach(char c in magazine)
+            {
+                if (letters.ContainsKey(c)) letters[c] += 1;
+                else letters.Add(c, 1);
+            }
+
+            foreach(char c in ransomNote)
+            {
+                if (letters.ContainsKey(c) && (letters[c] > 0)) letters[c] -= 1;
+                else return false;
+            }
+
+            return true;
         }
     }
 }
